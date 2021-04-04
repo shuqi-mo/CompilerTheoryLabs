@@ -17,6 +17,9 @@ public class CmdFactory {
             case "query":
             	cmd = new Query();
             	break;
+            case "delete":
+            	cmd = new Delete();
+            	break;
             case "quit":
             	cmd  = new Quit();
             	break;
