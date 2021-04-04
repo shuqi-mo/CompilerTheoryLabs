@@ -21,4 +21,8 @@ public class Meeting {
 	public String getEnd() {
 		return end;
 	}
+	
+	public void printinfo() {
+		System.out.println("Meeting "+title+" is from: "+start+" to: "+end);
+	}
 }

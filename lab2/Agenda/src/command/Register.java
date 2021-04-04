@@ -2,20 +2,23 @@ package command;
 
 import java.io.IOException;
 import service.UserManager;
+import utils.MyException;
 import service.MeetingManager;
 
 public class Register implements CmdBase{
-	public void resInfo(String[] args, UserManager usermanager, MeetingManager meetingmanager) throws IOException {
+	public void resInfo(String[] args, UserManager usermanager, MeetingManager meetingmanager) {
 		int length = args.length;
 		if(length != 3) {
-			System.out.println("命令错误");
+			System.out.println("参数错误");
 			return;
 		}
-		String name = args[1];
+		
+		String username = args[1];
 		String password = args[2];
+		
 		// 判断用户是否已注册
-		if(!usermanager.users.containsKey(name)) {
-			usermanager.register(name, password);
+		if(!usermanager.users.containsKey(username)) {
+			usermanager.register(username, password);
 			System.out.println("注册成功！");
 		}
 		else
