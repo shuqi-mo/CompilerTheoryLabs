@@ -5,6 +5,10 @@ import service.UserManager;
 import utils.MyException;
 import service.MeetingManager;
 
+/**
+ * Register命令类：用户注册
+ * register [username][password]
+ */
 public class Register implements CmdBase{
 	public void resInfo(String[] args, UserManager usermanager, MeetingManager meetingmanager) {
 		int length = args.length;

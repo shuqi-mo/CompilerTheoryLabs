@@ -10,6 +10,10 @@ import java.util.Set;
 import service.*;
 import utils.*;
 
+/**
+ * Delete命令类：根据会议标签删除用户的会议安排
+ * delete [username][password][start][end]
+ */
 public class Delete implements CmdBase {
 	public void resInfo(String args[], UserManager usermanager, MeetingManager meetingmanager) throws MyException {
 		int length = args.length;

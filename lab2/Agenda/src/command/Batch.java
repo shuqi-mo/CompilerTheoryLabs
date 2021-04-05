@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 import service.*;
 
+/**
+ * Batch命令类：文件批输入
+ * batch [filename]
+ */
 public class Batch implements CmdBase {
 	public void resInfo(String args[], UserManager usermanager, MeetingManager meetingmanager) throws IOException {
 		int length = args.length;
@@ -18,7 +22,7 @@ public class Batch implements CmdBase {
 		ArrayList cmdinfile = new ArrayList();
 		try {
 			BufferedReader in = new BufferedReader(new FileReader("test/" + filename + ".txt"));
-			String find =new String();
+			String find = new String();
 			while ((find = in.readLine()) != null){
 				cmdinfile.add(find);
 			}
@@ -27,8 +31,8 @@ public class Batch implements CmdBase {
 			e.printStackTrace();
 		}
 		
-		String[] temp ;
-		for (int i = 0;i < cmdinfile.size(); i++){
+		String[] temp;
+		for (int i = 0; i < cmdinfile.size(); i++){
 			temp = cmdinfile.get(i).toString().split("\\s");
 			try {
 				CmdBase cmd;

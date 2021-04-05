@@ -9,6 +9,10 @@ import java.util.Set;
 import service.*;
 import utils.*;
 
+/**
+ * Add命令类：添加会议
+ * add [username][password][other][start][end][title]
+ */
 public class Add implements CmdBase{
 	public void resInfo(String args[], UserManager usermanager, MeetingManager meetingmanager) throws ParseException, MyException {
 		int length = args.length;

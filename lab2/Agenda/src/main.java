@@ -6,6 +6,11 @@ import service.UserManager;
 import service.MeetingManager;
 
 public class main {
+	/**
+	 * 主函数
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		boolean test;
 		UserManager usermanager = new UserManager();
@@ -20,6 +25,12 @@ public class main {
 		} while (!test);
 	}
 	
+	/**
+	 * 判断命令类型，执行相关命令
+	 * @param args
+	 * @param usermanager
+	 * @param meetingmanager
+	 */
 	public static void handle(String[] args, UserManager usermanager, MeetingManager meetingmanager) {
 		try {
 			CmdBase cmd;

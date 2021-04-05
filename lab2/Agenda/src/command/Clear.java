@@ -6,6 +6,10 @@ import java.util.Set;
 import service.*;
 import utils.*;
 
+/**
+ * Clear命令类：清空用户的会议安排
+ * clear [username][password]
+ */
 public class Clear implements CmdBase {
 	public void resInfo(String args[], UserManager usermanager, MeetingManager meetingmanager) throws MyException {
 		int length = args.length;

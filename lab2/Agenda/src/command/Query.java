@@ -6,6 +6,10 @@ import java.util.*;
 import service.*;
 import utils.*;
 
+/**
+ * Query命令类：查询用户的会议安排
+ * query [username][password][start][end]
+ */
 public class Query implements CmdBase{
 	public void resInfo(String args[], UserManager usermanager, MeetingManager meetingmanager) throws ParseException, MyException {
 		int length = args.length;
