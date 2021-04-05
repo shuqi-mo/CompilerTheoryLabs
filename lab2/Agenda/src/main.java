@@ -26,7 +26,7 @@ public class main {
 			cmd = CmdFactory.builder(args[0].toLowerCase());
 			cmd.resInfo(args, usermanager, meetingmanager);
 		} catch (Exception e) {
-			System.out.print("命令错误\n");
+			System.out.println("命令错误\n");
 		}
 	}
 }

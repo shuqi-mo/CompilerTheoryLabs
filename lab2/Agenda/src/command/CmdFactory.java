@@ -20,6 +20,12 @@ public class CmdFactory {
             case "delete":
             	cmd = new Delete();
             	break;
+            case "clear":
+            	cmd = new Clear();
+            	break;
+            case "batch":
+            	cmd = new Batch();
+            	break;
             case "quit":
             	cmd  = new Quit();
             	break;

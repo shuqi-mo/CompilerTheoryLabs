@@ -19,7 +19,7 @@ public class Register implements CmdBase{
 		// 判断用户是否已注册
 		if(!usermanager.users.containsKey(username)) {
 			usermanager.register(username, password);
-			System.out.println("注册成功！");
+			System.out.println("用户"+username+"注册成功！");
 		}
 		else
 			System.out.println("用户已存在");

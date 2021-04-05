@@ -1,0 +1,10 @@
+register clare 123
+register kiki 456
+register karen 789
+add clare 123 kiki 1-11-11:00 1-11-12:00 finance
+add karen 789 clare 1-11-14:00 1-11-15:00 accouting
+add clare 123 kiki 1-11-17:00 1-11-18:00 marketing
+query clare 123 1-10-11:00 1-12-11:00
+delete kiki 456 finance
+clear karen 789
+query clare 123 1-10-11:00 1-12-11:00

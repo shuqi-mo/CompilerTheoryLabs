@@ -28,6 +28,8 @@ public class Query implements CmdBase{
 			return;
 		}
 		
+		System.out.println("正在查询"+username+"的会议安排……");
+		
 		// 打印输入时间内的会议信息
 		Set findMeeting = meetingmanager.findMeetingByUsername(username);
 		Set legalMeeting = new HashSet();

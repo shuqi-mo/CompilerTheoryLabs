@@ -56,6 +56,6 @@ public class Add implements CmdBase{
 			}
 		}
 		meetingmanager.add(username, password, other, start, end, title);
-		System.out.println("成功添加会议！");
+		System.out.println("会议"+title+"添加成功！");
 	}
 }
