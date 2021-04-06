@@ -35,13 +35,15 @@ public class Batch implements CmdBase {
 		for (int i = 0; i < cmdinfile.size(); i++){
 			temp = cmdinfile.get(i).toString().split("\\s");
 			try {
-				String cmdpre = temp[0];
+				String cmdpre = temp[0].toLowerCase();
 				char[] type = cmdpre.toCharArray();
 				type[0] -= 32;
 				CmdBase cmd = (CmdBase)Class.forName("command."+String.valueOf(type)).newInstance();
 				cmd.resInfo(temp, usermanager, meetingmanager);
 			} catch (Exception e) {
 				System.out.print("命令错误\n");
+			} finally {
+				continue;
 			}
 		}
 	}

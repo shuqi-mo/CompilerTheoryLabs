@@ -1,0 +1,6 @@
+regist a 123
+register a
+reGister a 123
+register a 456
+register b 456
+register c 789

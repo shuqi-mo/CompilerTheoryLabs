@@ -31,7 +31,7 @@ public class main {
 	 */
 	public static void handle(String[] args, UserManager usermanager, MeetingManager meetingmanager) {
 		try {
-			String cmdpre = args[0];
+			String cmdpre = args[0].toLowerCase();
 			char[] type = cmdpre.toCharArray();
 			type[0] -= 32;
 			CmdBase cmd = (CmdBase)Class.forName("command."+String.valueOf(type)).newInstance();

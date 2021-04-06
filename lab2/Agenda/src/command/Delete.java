@@ -12,7 +12,7 @@ import utils.*;
 
 /**
  * Delete命令类：根据会议标签删除用户的会议安排
- * delete [username][password][start][end]
+ * delete [username][password][title]
  */
 public class Delete implements CmdBase {
 	public void resInfo(String args[], UserManager usermanager, MeetingManager meetingmanager) throws MyException {

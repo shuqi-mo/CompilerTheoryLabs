@@ -1,0 +1,8 @@
+add a
+add a 456 b 1-1-10:00 1-1-11:00 meeting1
+adb a 123 b 10:00:00 11:00:00 meeting1
+add a 123 b 10:00:00 11:00:00 meeting1
+add a 123 b 1-1-10:00 1-1-11:00 meeting1
+add b 456 a 1-1-13:00 1-1-14:00 meeting2
+add b 456 a 1-1-13:30 1-1-14:30 meeting3
+add b 456 c 1-1-15:00 1-1-16:00 meeting3

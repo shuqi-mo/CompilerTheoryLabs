@@ -1,0 +1,7 @@
+dele b 456 meeting2
+delete b
+delete b 123 meeting2
+delete b 456 meeting2
+query a 123 1-1-9:00 1-2-10:00
+query b 456 1-1-9:00 1-2-10:00
+query c 789 1-1-9:00 1-2-10:00

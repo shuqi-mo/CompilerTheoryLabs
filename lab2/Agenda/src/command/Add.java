@@ -44,6 +44,7 @@ public class Add implements CmdBase{
 		DateFormat sf = new SimpleDateFormat("MM-dd-hh:mm");
 		Date startTime = (Date) sf.parse(start);
 		Date endTime = (Date) sf.parse(end);
+		
 		if (!findMeeting.isEmpty()) {
 			Iterator find = findMeeting.iterator();
 			while (find.hasNext()) {
