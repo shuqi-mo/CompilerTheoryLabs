@@ -1,9 +1,7 @@
 import java.io.*;
 
-import command.CmdBase;
-import command.CmdFactory;
-import service.UserManager;
-import service.MeetingManager;
+import command.*;
+import service.*;
 
 public class main {
 	/**
@@ -33,8 +31,10 @@ public class main {
 	 */
 	public static void handle(String[] args, UserManager usermanager, MeetingManager meetingmanager) {
 		try {
-			CmdBase cmd;
-			cmd = CmdFactory.builder(args[0].toLowerCase());
+			String cmdpre = args[0];
+			char[] type = cmdpre.toCharArray();
+			type[0] -= 32;
+			CmdBase cmd = (CmdBase)Class.forName("command."+String.valueOf(type)).newInstance();
 			cmd.resInfo(args, usermanager, meetingmanager);
 		} catch (Exception e) {
 			System.out.println("命令错误\n");
