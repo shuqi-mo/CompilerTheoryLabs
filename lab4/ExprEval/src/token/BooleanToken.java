@@ -1,4 +1,4 @@
-package scanner;
+package token;
 
 public class BooleanToken extends Token {
 	protected Boolean value;

@@ -1,10 +1,15 @@
 package scanner;
 
 import exceptions.*;
+import token.Token;
+import token.BooleanToken;
+import token.OperatorToken;
+import token.DecimalToken;
+import token.FunctionToken;
+import token.DollarToken;
 
 public class Scanner {
 	protected int index;
-	protected String inputString;
 	protected String input;
 	protected int len;
 	protected final String opers = "+-*/^?:><=&|!(),";
@@ -13,8 +18,7 @@ public class Scanner {
 	 * @param expression  表达式字符串
 	 */
 	public Scanner(String expression) {
-		inputString = expression;
-		input = inputString.toLowerCase().replace(" ", "");
+		input = expression.toLowerCase().replace(" ", "");
 		index = 0;
 		len = input.length();
 	}	
@@ -24,7 +28,7 @@ public class Scanner {
 	 * @throws LexicalException
 	 * @throws ExpressionException
 	 */
-	public Token DecimalDFA() throws LexicalException, ExpressionException {
+	public Token decimalDFA() throws LexicalException, ExpressionException {
 		Boolean dotFlag = false;
 		Boolean eFlag = false;
 		int startInt = index;
@@ -82,7 +86,7 @@ public class Scanner {
 	 * @throws LexicalException
 	 * @throws ExpressionException
 	 */
-	public Token BooleanDFA(Character curChar) throws LexicalException, ExpressionException {
+	public Token booleanDFA(Character curChar) throws LexicalException, ExpressionException {
 		String boolStr = "";
 		if (curChar == 't') {
 			boolStr = input.substring(index, index+4);
@@ -110,7 +114,7 @@ public class Scanner {
 	 * @throws LexicalException
 	 * @throws ExpressionException
 	 */
-	public Token FunctionDFA() throws LexicalException, ExpressionException {
+	public Token functionDFA() throws LexicalException, ExpressionException {
 		String funcLow = input.substring(index, index+3);
 		if (funcLow.equals("sin") || funcLow.equals("cos") || funcLow.equals("max") || funcLow.equals("min")) {
 			index += 3;
@@ -127,7 +131,7 @@ public class Scanner {
 	 * @throws LexicalException
 	 * @throws ExpressionException
 	 */
-	public Token OperDFA(Character curChar) throws LexicalException, ExpressionException {
+	public Token operDFA(Character curChar) throws LexicalException, ExpressionException {
 		if (curChar == '>') {
 			if (index < len - 1) {
 				if (input.charAt(index+1) == '=') {
@@ -186,17 +190,17 @@ public class Scanner {
 		if (len == 0)	
 			throw new EmptyExpressionException();
 		if (index >= len)	
-			return new Dollar();
+			return new DollarToken();
 		
 		Character curChar = input.charAt(index);
 		if (Character.isDigit(curChar))
-			return DecimalDFA();
+			return decimalDFA();
 		else if (curChar == 't' || curChar == 'f')
-			return BooleanDFA(curChar);
+			return booleanDFA(curChar);
 		else if (curChar == 's' || curChar == 'c' || curChar == 'm')
-			return FunctionDFA();
+			return functionDFA();
 		else if (opers.indexOf(curChar) != -1)
-			return OperDFA(curChar);
+			return operDFA(curChar);
 		else {
 			if (curChar == '.') {
 				if (index + 1 < input.length()) {

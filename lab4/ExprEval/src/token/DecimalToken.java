@@ -1,4 +1,4 @@
-package scanner;
+package token;
 
 public class DecimalToken extends Token {
 	protected Double value;

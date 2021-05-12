@@ -2,8 +2,8 @@ package parser;
 
 import java.util.*;
 import exceptions.*;
-import scanner.*;
 import scanner.Scanner;
+import token.*;
 
 public class Parser {
 	private final String[] TAG = {"(", ")", "func", "-", "^", "md", "pm", "cmp", "!", "&", "|", "?", ":", ",", "$"};
@@ -13,18 +13,18 @@ public class Parser {
 	private Token topToken = new Token();
 	private static final Double ERROR = 0.00000001;
 	/**
-	 * 构造函数：初始化两个堆栈，将Dollar符号压入操作符堆栈中
+	 * 构造函数：初始化两个堆栈，将DollarToken符号压入操作符堆栈中
 	 */
 	public Parser() {
 		operators.clear();
 		operands.clear();
-		Dollar dollar = new Dollar();
-		operators.push(dollar);				
+		DollarToken DollarToken = new DollarToken();
+		operators.push(DollarToken);				
 	}
 	/**
 	 * 获取相应词法单元的tag
 	 * @param temp  词法单元
-	 * @return 该词法单元在OPP符号表中所对应的标记
+	 * @return
 	 */
 	private String getTag(Token temp) {
 		String tempType = temp.getType();
@@ -34,12 +34,12 @@ public class Parser {
 		if (tempType.equals("Operator")) {
 			return ((OperatorToken)temp).getTag();
 		}
-		return ((Dollar)temp).getTag();
+		return ((DollarToken)temp).getTag();
 	}
 	/**
 	 * 获取词法单元tag在TAG中对应的下标
 	 * @param label  符号表中的词法单元标记
-	 * @return 词法单元在符号表中对应的下标
+	 * @return
 	 */
 	private int getIndex(String tag) {
 		return Arrays.asList(TAG).indexOf(tag);
@@ -220,8 +220,7 @@ public class Parser {
 		Token operandB = operands.pop();
 		Token operandA = operands.pop();
 		if (operatorA.getValue().equals("?") && operatorB.getValue().equals(":")) {
-			if (operandA.getType().equals("Boolean") && operandB.getType().equals("Decimal") 
-					&& operandC.getType().equals("Decimal")) {
+			if (operandA.getType().equals("Boolean") && operandB.getType().equals("Decimal") && operandC.getType().equals("Decimal")) {
 				Double valueD = 0.0;
 				if ( ((BooleanToken)operandA).getValue() ) {
 					valueD = ((DecimalToken)operandB).getValue(); 
@@ -240,7 +239,7 @@ public class Parser {
 		}
 	}
 	/**
-	 * 括号运算以及函数运算归约。当读到右括号时，执行此归约。最后判断左括号的左边是否有函数符号，有则通过调用doFunction函数来继续执行函数运算归约。
+	 * 括号运算与函数运算归约
 	 * @throws TypeMismatchedException
 	 * @throws SyntacticException
 	 * @throws DividedByZeroException 
@@ -270,7 +269,7 @@ public class Parser {
 				else if (cntComma == 0 && tempNum == 3) {
 					reduceTrinary();
 				}
-				else if (((OperatorToken)tempOperator).getValue().equals(",")) { //该操作符是,
+				else if (((OperatorToken)tempOperator).getValue().equals(",")) {
 					operators.pop();
 					cntComma++;
 				}
@@ -285,17 +284,16 @@ public class Parser {
 			doFunction(cntComma, ((FunctionToken)tempOperator).getValue());
 			operators.pop();
 		}		
-		
 	}
 	/**
-	 * 执行语法分析和语义动作。
+	 * 执行语法分析和语义动作
 	 * @param expression  表达式字符串
 	 * @return 表达式运算结果
 	 * @throws ExpressionException
 	 */
 	public Double parsing(String expression) throws ExpressionException {
 		Scanner scanner = new Scanner(expression);
-		curToken = scanner.getNextToken();
+		curToken = (token.Token)scanner.getNextToken();
 		Boolean completed = false;
 		int action = 0;
 		int lableStackIndex;
@@ -329,23 +327,23 @@ public class Parser {
 				case OPP.RDTRINAOPER:
 					reduceTrinary();
 					break;
-				case OPP.RDMATCH:
+				case OPP.RDPARENTHESIS:
 					matchReduce();
 					curToken = scanner.getNextToken();
 					break;
-				case OPP.ERRLEFTPAR:
+				case OPP.MISSINGLEFTPARENTHESIS:
 					throw new MissingLeftParenthesisException();
-				case OPP.ERRSYN:
+				case OPP.SYNTACTICEXCEPTION:
 					throw new SyntacticException();
-				case OPP.ERROPERAND:
+				case OPP.MISSINGOPERAND:
 					throw new MissingOperandException();
-				case OPP.ERRTYPE:
+				case OPP.TYPEMISMATCH:
 					throw new TypeMismatchedException();
-				case OPP.ERRFUNCSYN:
+				case OPP.FUNCTIONCALL:
 					throw new FunctionCallException();
-				case OPP.ERRRIGHTPAR:
+				case OPP.MISSINGRIGHTPARENTHESIS:
 					throw new MissingRightParenthesisException();
-				case OPP.ERRTRINA:
+				case OPP.TRINARYOPERATION:
 					throw new TrinaryOperationException();
 				default:
 					break;

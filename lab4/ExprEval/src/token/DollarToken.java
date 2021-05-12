@@ -1,11 +1,11 @@
-package scanner;
+package token;
 
-public class Dollar extends Token {
+public class DollarToken extends Token {
 	protected String tag;
 	/**
 	 * 构造函数：设置终止符Token的类型与标记
 	 */
-	public Dollar() {
+	public DollarToken() {
 		type = "Dollar";
 		tag = "$";
 	}

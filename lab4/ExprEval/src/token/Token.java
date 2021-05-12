@@ -1,4 +1,4 @@
-package scanner;
+package token;
 
 public class Token {
 	protected String type;

@@ -1,4 +1,4 @@
-package scanner;
+package token;
 
 public class FunctionToken extends Token {
 	protected String value;

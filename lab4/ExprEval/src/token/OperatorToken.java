@@ -1,4 +1,4 @@
-package scanner;
+package token;
 
 public class OperatorToken extends Token {
 	protected String value;
