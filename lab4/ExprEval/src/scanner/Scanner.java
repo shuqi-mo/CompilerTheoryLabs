@@ -31,8 +31,8 @@ public class Scanner {
 	public Token decimalDFA() throws LexicalException, ExpressionException {
 		Boolean dotFlag = false;
 		Boolean eFlag = false;
-		int startInt = index;
-		for (int i = startInt + 1; i < len; i++) {
+		int start = index;
+		for (int i = start + 1; i < len; i++) {
 			char peek = input.charAt(i);
 			if (Character.isDigit(peek)) {
 				index++;
@@ -77,7 +77,7 @@ public class Scanner {
 			}
 		}
 		index++; 
-		return new DecimalToken(input.substring(startInt, index));
+		return new DecimalToken(input.substring(start, index));
 	}
 	/**
 	 * 生成布尔型token的状态自动机
@@ -155,8 +155,7 @@ public class Scanner {
 		if (curChar == '-') {
 			if (index - 1 >= 0) {
 				//只有当-前为）或者数字时，它才代表减号，否则就是负号
-				if (input.charAt(index - 1 ) == ')' || 
-						Character.isDigit(input.charAt(index -1))) {
+				if (input.charAt(index - 1 ) == ')' || Character.isDigit(input.charAt(index -1))) {
 					index += 1;
 					return new OperatorToken("-");
 				}
@@ -181,7 +180,7 @@ public class Scanner {
 		return new OperatorToken(curChar.toString());
 	}
 	/**
-	 * 获取下一个词法单元。
+	 * 获取下一个词法单元
 	 * @return 读取到的词法单元
 	 * @throws LexicalException
 	 * @throws ExpressionException

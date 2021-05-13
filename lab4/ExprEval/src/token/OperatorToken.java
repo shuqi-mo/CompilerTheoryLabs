@@ -19,8 +19,7 @@ public class OperatorToken extends Token {
 		else if(Oper.equals("minus")) {
 			tag = "-";
 		}
-		else if (Oper.equals("=") || Oper.equals("<") || Oper.equals(">") ||
-				Oper.equals("<=") || Oper.equals(">=") || Oper.equals("<>")) {
+		else if (Oper.equals("=") || Oper.equals("<") || Oper.equals(">") || Oper.equals("<=") || Oper.equals(">=") || Oper.equals("<>")) {
 			tag = "cmp";
 		}
 		else {

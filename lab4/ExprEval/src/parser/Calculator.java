@@ -10,8 +10,8 @@ import exceptions.*;
 /**
  * Main program of the expression based calculator ExprEval
  * 
- * @author [PENDING your name]
- * @version 1.00 (Last update: [PENDING the last update])
+ * @author Mo Shuqi
+ * @version 1.00 (Last update: [2021-05-12])
 **/
 public class Calculator
 {
