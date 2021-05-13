@@ -161,7 +161,7 @@ public class Scanner {
 				}
 			}
 			index += 1;
-			return new OperatorToken("minus");
+			return new OperatorToken("neg");
 		}
 		// 由于操作符和操作数不在同一个栈中，有些语法错误只能在词法分析中抛出
 		if (curChar == ')') {

@@ -98,7 +98,7 @@ public class Parser {
 		operators.push(oper);
 	}
 	/**
-	 * 单目运算的归约:!,-，取一个操作数
+	 * 单元运算的归约:!,-，取一个操作数
 	 * @throws SyntacticException
 	 */
 	private void reduceUnary() throws SyntacticException{
@@ -119,7 +119,7 @@ public class Parser {
 		operands.push(tempOperand);
 	}
 	/**
-	 * 双目运算归约:加，减，乘，除，取幂，关系运算，取与，取或这些二元算符归约，取两个操作数
+	 * 双元运算归约:加，减，乘，除，取幂，关系运算，取与，取或这些二元算符归约，取两个操作数
 	 * @throws TypeMismatchedException 
 	 * @throws DividedByZeroException 
 	 * @throws SyntacticException
@@ -205,7 +205,7 @@ public class Parser {
 		}		
 	}
 	/**
-	 * 三目运算归约：执行选择运算(?:)三元运算的归约，取3个操作数
+	 * 三元运算归约：执行选择运算(?:)三元运算的归约，取3个操作数
 	 * @throws TrinaryOperationException
 	 * @throws TypeMismatchedException
 	 * @throws SyntacticException
@@ -239,7 +239,7 @@ public class Parser {
 		}
 	}
 	/**
-	 * 括号运算与函数运算归约
+	 * 括号运算与预定义函数运算归约
 	 * @throws TypeMismatchedException
 	 * @throws SyntacticException
 	 * @throws DividedByZeroException 

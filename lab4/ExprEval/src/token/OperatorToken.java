@@ -16,7 +16,7 @@ public class OperatorToken extends Token {
 		else if(Oper.equals("*") || Oper.equals("/")) {
 			tag = "md";
 		}
-		else if(Oper.equals("minus")) {
+		else if(Oper.equals("neg")) {
 			tag = "-";
 		}
 		else if (Oper.equals("=") || Oper.equals("<") || Oper.equals(">") || Oper.equals("<=") || Oper.equals(">=") || Oper.equals("<>")) {
@@ -41,7 +41,7 @@ public class OperatorToken extends Token {
 		return tag;
 	}
 	/**
-	 * 获取操作符是几目运算符
+	 * 获取操作符是几元运算符
 	 * @return
 	 */
 	public int getNum() {
@@ -50,8 +50,7 @@ public class OperatorToken extends Token {
 		if (tag.equals("-") || tag.equals("!")) {
 			num = 1;
 		}
-		if (tag.equals("pm") || tag.equals("md") || tag.equals("^") ||
-				tag.equals("&") || tag.equals("|") || tag.equals("cmp")) {
+		if (tag.equals("pm") || tag.equals("md") || tag.equals("^") || tag.equals("&") || tag.equals("|") || tag.equals("cmp")) {
 			num = 2;
 		}
 		if (tag.equals("?") || tag.equals(":")) {

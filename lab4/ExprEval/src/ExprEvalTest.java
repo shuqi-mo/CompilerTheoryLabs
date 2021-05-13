@@ -53,7 +53,7 @@ public class ExprEvalTest {
 	}
 
 	@Test
-	public void test9() throws Exception {
+	public void test8() throws Exception {
 		try {
 			c.calculate("(1 + 2) ^ (3 - 4) 5");
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class ExprEvalTest {
 	}
 	
 	@Test
-	public void test10() throws Exception {
+	public void test9() throws Exception {
 		try {
 			c.calculate("(1 + 2) ^ (3 - ) + 5");
 		} catch (Exception e) {
@@ -71,7 +71,7 @@ public class ExprEvalTest {
 	}
 	
 	@Test
-	public void test11() throws Exception {
+	public void test10() throws Exception {
 		try {
 			c.calculate("4 / (12 - 3 * 4) + 1");
 		} catch (Exception e) {
@@ -80,11 +80,16 @@ public class ExprEvalTest {
 	}
 	
 	@Test
-	public void test12() throws Exception {
+	public void test11() throws Exception {
 		try {
 			c.calculate("(13 < 2 * 5) + 12");
 		} catch (Exception e) {
 			assertTrue(e instanceof TypeMismatchedException);
 		}
+	}
+	
+	@Test
+	public void test12() throws Exception {
+		assertTrue(Math.abs(c.calculate("-9 - 3 * 2") + 15) <= accurancy);
 	}
 }

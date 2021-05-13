@@ -9,9 +9,9 @@ public class OPP {
 	public static final int MISSINGRIGHTPARENTHESIS = -2;	// 缺少右括号
 	public static final int TRINARYOPERATION = -1;	// 三元运算符异常
 	public static final int SHIFT = 0;	// 移入
-	public static final int RDUNAOPER = 1;	// 单目运算
-	public static final int RDBINAOPER = 2;	// 双目运算
-	public static final int RDTRINAOPER = 3;	// 三目运算
+	public static final int RDUNAOPER = 1;	// 单元运算
+	public static final int RDBINAOPER = 2;	// 双元运算
+	public static final int RDTRINAOPER = 3;	// 三元运算
 	public static final int RDPARENTHESIS = 4;	// 括号运算
 	public static final int ACCEPT = 5;	// 接受
 	
